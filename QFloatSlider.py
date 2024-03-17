@@ -12,7 +12,7 @@ class QFloatSlider(QtWidgets.QSlider):
         super(QFloatSlider, self).__init__(orientation, *args, **kargs)
         self._multiple = pow(10, decimals)
 
-    def emitDoubleValueChanged(self):
+    def emitFloatValueChanged(self):
         value = float(super(QFloatSlider, self).value()) / self._multiple
         self.floatValueChanged.emit(value)
     
