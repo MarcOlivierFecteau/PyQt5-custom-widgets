@@ -1,16 +1,15 @@
-from PyQt5 import QtCore as qtc
-from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtCore, QtWidgets
 
-class QFloatSlider(qtw.QSlider):
+class QFloatSlider(QtWidgets.QSlider):
 
     # Create our own signal that we can connect to if necessary
-    floatValueChanged = qtc.pyqtSignal(float)
+    floatValueChanged = QtCore.pyqtSignal(float)
 
     # Create a local attribute to convert between float and int values
     _multiple: int
 
-    def __init__(self, decimals=2, *args, **kargs):
-        super(QFloatSlider, self).__init__(*args, **kargs)
+    def __init__(self, orientation=QtCore.Qt.Horizontal, decimals=2, *args, **kargs):
+        super(QFloatSlider, self).__init__(orientation, *args, **kargs)
         self._multiple = pow(10, decimals)
 
     def emitDoubleValueChanged(self):
